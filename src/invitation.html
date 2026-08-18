@@ -28,6 +28,8 @@
             modal.showModal();
         })
         confirmBtn.addEventListener("click", () => {
+            currentScale = 1.3;
+            yesBtn.style.transform = `scale(${currentScale})`;
             modal.close();
         })
 
