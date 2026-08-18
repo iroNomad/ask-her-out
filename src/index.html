@@ -2,9 +2,79 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ask her out</title>
+    <style>
+        body, button, input {
+            font-family: Georgia, Garamond, serif;
+        }
+        h1 {
+            margin: 0 auto 40px;
+            text-align: center;
+        }
+        label {
+            font-size: 1.2rem;
+        }
+        input, button {
+            font-size: 1.4rem;
+            height: 30px;
+            margin-bottom: 10px;
+            border-radius: 10px;
+            border: none;
+        }
+        input {
+            opacity: 0.8;
+            padding: 10px 20px;
+        }
+        button {
+            margin-top: 20px;
+            height: 60px;
+            border: double 4px;
+            color: white;
+            background: deeppink;
+        }
+        button:hover {
+            cursor: pointer;
+        }
+        .card {
+            background: lightpink;
+            padding: 5%;
+            border: dashed 4px deeppink;
+            max-width: 425px;
+            margin: 0 auto;
+        }
+        .form-input {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .result-card {
+            display: none;
+        }
+        @media (max-width: 320px) {
+            button {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
 </head>
 <body>
+    <div class="card">
+        <h1>Invitation writing</h1>
+        <form class="form-input">
+            <label for="target-name">What's her/his name?</label>
+            <input type="text" id="target-name" required>
+            <label for="email">Your email address</label>
+            <input type="email" id="email" required>
+            <button type="submit">🤍 Create the Invitation 🤍</button>
+        </form>
+    </div>
+    <div class="result-card">
+        <p>Send this custom link to your crush: </p>
 
+    </div>
+    <script>
+
+    </script>
 </body>
 </html>
