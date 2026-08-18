@@ -67,3 +67,6 @@ dialog {
 #modal-title {
     margin-bottom: 20px;
 }
+img {
+    width: 100%;
+}
