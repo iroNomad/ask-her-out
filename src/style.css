@@ -1,0 +1,69 @@
+body, button, input {
+    font-family: Georgia, Garamond, serif;
+}
+h1 {
+    font-size: 1.6rem;
+    margin: 0 auto 40px;
+    text-align: center;
+}
+label {
+    font-size: 1.2rem;
+}
+input, button {
+    font-size: 1.4rem;
+    height: 30px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    border: none;
+}
+input {
+    opacity: 0.8;
+    padding: 10px 20px;
+}
+button {
+    margin-top: 20px;
+    height: 60px;
+    border: double 4px;
+    color: white;
+    background: deeppink;
+}
+button:hover {
+    cursor: pointer;
+}
+.card, dialog {
+    background: lightpink;
+    padding: 5%;
+    border: dashed 4px deeppink;
+    max-width: 425px;
+    margin: 0 auto;
+}
+.form-input {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+dialog {
+    margin: auto;
+}
+@media (max-width: 320px) {
+    button {
+        font-size: 1.2rem;
+    }
+}
+.modal-box {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+}
+.btn-copy {
+    align-self: center;
+    width: 50%;
+    border: none;
+    height: 40px;
+}
+.btn-done {
+    width: 100%;
+}
+#modal-title {
+    margin-bottom: 20px;
+}
