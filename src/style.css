@@ -50,7 +50,7 @@ dialog {
         font-size: 1.2rem;
     }
 }
-.modal-box {
+.submit-modal {
     display: flex;
     flex-direction: column;
     align-self: center;
@@ -90,4 +90,7 @@ img {
     position: relative;
     color: black;
     background: lightgray;
+}
+.btn-confirm {
+    width: 100%;
 }
