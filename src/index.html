@@ -37,7 +37,7 @@
         button:hover {
             cursor: pointer;
         }
-        .card {
+        .card, dialog {
             background: lightpink;
             padding: 5%;
             border: dashed 4px deeppink;
@@ -49,33 +49,73 @@
             flex-direction: column;
             gap: 20px;
         }
-        .result-card {
-            display: none;
+        dialog {
+            margin: auto;
         }
         @media (max-width: 320px) {
             button {
                 font-size: 1.2rem;
             }
         }
+        .modal-box {
+            display: flex;
+            flex-direction: column;
+            align-self: center;
+        }
+        .btn-copy {
+            align-self: center;
+            width: 50%;
+            border: none;
+            height: 40px;
+        }
+        .btn-done {
+            width: 100%;
+        }
+        #modal-title {
+            margin-bottom: 20px;
+        }
     </style>
 </head>
 <body>
     <div class="card">
-        <h1>Invitation writing</h1>
+        <h1>Ask Her Out!</h1>
         <form class="form-input">
             <label for="target-name">What's her/his name?</label>
-            <input type="text" id="target-name" required>
+            <input type="text" id="target-name" >
             <label for="email">Your email address</label>
-            <input type="email" id="email" required>
-            <button type="submit">🤍 Create the Invitation 🤍</button>
+            <input type="email" id="email" >
+            <button id="submit">🤍 Create the Invitation 🤍</button>
         </form>
     </div>
-    <div class="result-card">
-        <p>Send this custom link to your crush: </p>
-
-    </div>
+    <dialog id="submit-modal">
+        <div class="modal-box">
+            <h1 id="modal-title">Your invitation is ready!</h1>
+            <p>Send this invitation link to her: </p>
+            <a href="./invitation.html">CreatetheInvitation-link.comCreatetheInn-link.comn-link.comCreatethe</a>
+            <button class="btn-copy" onclick="copiedTextShow()">Copy link</button>
+            <form method="dialog">
+                <button onclick="closeModal()" class="btn-done">Done</button>
+            </form>
+        </div>
+    </dialog>
     <script>
+        const modal = document.getElementById("submit-modal");
+        const form = document.querySelector(".form-input");
+        const copyBtn = document.querySelector(".btn-copy");
+        const copiedText = document.createElement('p');
+        copiedText.textContent = "Copied!"
+        copiedText.style.textAlign = "center";
 
+        form.addEventListener("submit", (e) => {
+            e.preventDefault();
+            modal.showModal();
+        });
+        const copiedTextShow = () => {
+            copyBtn.replaceWith(copiedText);
+        }
+        const closeModal = () => {
+            copiedText.replaceWith(copyBtn);
+        }
     </script>
 </body>
 </html>
