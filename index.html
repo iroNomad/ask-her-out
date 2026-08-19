@@ -17,25 +17,23 @@
             <button id="submit">🤍 Create the Invitation 🤍</button>
         </form>
     </div>
-    <dialog id="submit-modal">
-        <div class="yes-modal">
-            <h1 id="modal-title">Your invitation is ready!</h1>
-            <p>Send this invitation link to her: </p>
-            <a class="invi-link" href=""></a>
-            <button class="btn-copy" onclick="copiedTextShow()">Copy link</button>
-            <form method="dialog">
-                <button onclick="closeModal()" class="btn-done">Done</button>
-            </form>
-        </div>
+    <dialog class="modal">
+        <h1 id="modal-title">Your invitation is ready!</h1>
+        <p>Send this invitation link to her: </p>
+        <a class="invi-link" href=""></a>
+        <button class="btn-copy" onclick="copiedTextShow()">Copy link</button>
+        <form method="dialog">
+            <button onclick="closeModal()" class="btn-done">Done</button>
+        </form>
     </dialog>
     <script>
-        //DOM elements
-        const modal = document.getElementById("submit-modal");
+        // DOM elements
+        const modal = document.querySelector(".modal");
         const form = document.querySelector(".form-input");
         const copyBtn = document.querySelector(".btn-copy");
         const targetNameInput = document.getElementById("target-name");
-        const emailInput = document.getElementById("email")
-        const inviLink = document.querySelector(".invi-link")
+        const emailInput = document.getElementById("email");
+        const inviLink = document.querySelector(".invi-link");
         const copiedText = document.createElement('p');
         copiedText.textContent = "Copied!"
         copiedText.style.textAlign = "center";

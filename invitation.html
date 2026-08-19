@@ -15,40 +15,41 @@
         <img src="https://images.hive.blog/DQmbwyEZ4MHNr5KH4cuCyVewra5b7ARNBqyitaF9huy1BTK/image.png" alt="puss in boots image">
         <div class="btn-container">
             <button class="btn-yes">YES! 🤍</button>
-            <button class="btn-no" onclick="increaseYesButtonSize()">No... 💔</button>
+            <button class="btn-no" onclick="increaseYesButtonSize()">No...💔</button>
         </div>
     </div>
-    <dialog class="yes-modal">
+    <dialog class="modal">
         <h1>I knew you would say YES 😍</h1>
         <button class="btn-confirm">Confirm</button>
     </dialog>
     <script>
         const yesBtn = document.querySelector(".btn-yes");
-        const modal = document.querySelector(".yes-modal");
+        const modal = document.querySelector(".modal");
         const confirmBtn = document.querySelector(".btn-confirm");
 
+        // EmailJS initializing
         emailjs.init({
             publicKey: "TEiwOmEL1z1uY3LtR",
             blockHeadless: true,
         });
-        //Parameters for emailJS
+        // Parameters for emailJS
         let templateParams = {
             name: 'Sofia',
             email: 'jaka0926@naver.com',
         };
 
-        //'No' button click -> 'Yes' button scales up
+        // 'No' button click -> 'Yes' button scales up
         let currentScale = 1.3;
         const increaseYesButtonSize = () => {
             currentScale += 0.3;
             yesBtn.style.transform = `scale(${currentScale})`;
             yesBtn.style.transition = "transform 0.1s ease";
         }
-        //'Yes' button click -> Modal opens, sends email to inviter
+        // 'Yes' button click -> Modal opens, sends email to inviter
         let isCooldown = false;
         yesBtn.addEventListener("click", () => {
             modal.showModal();
-            // 1. If we are in cooldown, stop execution immediately
+            // 1. If button is in cooldown, stop execution immediately
             if (isCooldown) return;
 
             // 2. Lock the state and disable the button UI
@@ -64,7 +65,7 @@
                     console.log('SUCCESS!', response.status, response.text);
                 })
                 .catch((error) => {
-                    console.error('FAILED...', error);
+                    alert("Error: Failed to send response")
                 })
                 .finally(() => {
                     // 4. Unlock after 10 seconds
@@ -76,7 +77,7 @@
                     }, 10000);
                 });
         })
-        //'Confirm' button click -> Modal closes,'Yes' button scale rate resets
+        // 'Confirm' button click -> Modal closes,'Yes' button scale rate resets
         confirmBtn.addEventListener("click", () => {
             currentScale = 1.3; //1.3 is default value
             yesBtn.style.transform = `scale(${currentScale})`;

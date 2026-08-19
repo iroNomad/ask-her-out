@@ -50,7 +50,7 @@ dialog {
         font-size: 1.2rem;
     }
 }
-.submit-modal .yes-modal {
+.modal[open] { /* Only applies when modal is open */
     display: flex;
     flex-direction: column;
 }
