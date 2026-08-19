@@ -50,7 +50,7 @@ dialog {
         font-size: 1.2rem;
     }
 }
-.yes-modal {
+.submit-modal .yes-modal {
     display: flex;
     flex-direction: column;
 }

@@ -41,11 +41,12 @@
         copiedText.style.textAlign = "center";
 
         form.addEventListener("submit", (e) => {
-            e.preventDefault();
+            e.preventDefault(); // Stop default form submit reload
 
             const nameValue = encodeURIComponent(targetNameInput.value.trim());
             const emailValue = encodeURIComponent(emailInput.value.trim());
 
+            // Construct custom URL to invitation.html
             const baseURL = window.location.href.substring(0, window.location.href.lastIndexOf("/")+1);
             const generatedURL = `${baseURL}invitation.html?name=${nameValue}&email=${emailValue}`;
 
