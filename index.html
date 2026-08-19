@@ -55,6 +55,7 @@
             modal.showModal();
         });
         const copyLink = () => {
+            navigator.clipboard.writeText(inviLink.href);
             copyBtn.replaceWith(copiedText);
         }
         const closeModal = () => {
