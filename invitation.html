@@ -26,6 +26,17 @@
         const yesBtn = document.querySelector(".btn-yes");
         const modal = document.querySelector(".modal");
         const confirmBtn = document.querySelector(".btn-confirm");
+        const targetNameElement = document.querySelector("#target-name");
+
+        //Extract name, email from URL
+        const queryString = window.location.search;
+        const URLparams = new URLSearchParams(queryString);
+        const targetName = URLparams.get("name");
+        const emailAdress = URLparams.get("email");
+
+        if (targetName) {
+            targetNameElement.textContent = targetName;
+        }
 
         // EmailJS initializing
         emailjs.init({
@@ -34,8 +45,8 @@
         });
         // Parameters for emailJS
         let templateParams = {
-            name: 'Sofia',
-            email: 'jaka0926@naver.com',
+            name: targetName || 'She',
+            email: emailAdress,
         };
 
         // 'No' button click -> 'Yes' button scales up

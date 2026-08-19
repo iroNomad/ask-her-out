@@ -21,7 +21,7 @@
         <h1 id="modal-title">Your invitation is ready!</h1>
         <p>Send this invitation link to her: </p>
         <a class="invi-link" href=""></a>
-        <button class="btn-copy" onclick="copiedTextShow()">Copy link</button>
+        <button class="btn-copy" onclick="copyLink()">Copy link</button>
         <form method="dialog">
             <button onclick="closeModal()" class="btn-done">Done</button>
         </form>
@@ -53,7 +53,7 @@
 
             modal.showModal();
         });
-        const copiedTextShow = () => {
+        const copyLink = () => {
             copyBtn.replaceWith(copiedText);
         }
         const closeModal = () => {
