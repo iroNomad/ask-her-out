@@ -50,10 +50,12 @@ dialog {
         font-size: 1.2rem;
     }
 }
-.submit-modal {
+.yes-modal {
     display: flex;
     flex-direction: column;
-    align-self: center;
+}
+.invi-link {
+    display: block;
 }
 .btn-copy {
     align-self: center;

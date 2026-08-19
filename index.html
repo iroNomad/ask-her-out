@@ -21,7 +21,7 @@
         <div class="yes-modal">
             <h1 id="modal-title">Your invitation is ready!</h1>
             <p>Send this invitation link to her: </p>
-            <a href="invitation.html">CreatetheInvitation-link.comCreatetheInn-link.comn-link.comCreatethe</a>
+            <a class="invi-link" href=""></a>
             <button class="btn-copy" onclick="copiedTextShow()">Copy link</button>
             <form method="dialog">
                 <button onclick="closeModal()" class="btn-done">Done</button>
@@ -29,15 +29,29 @@
         </div>
     </dialog>
     <script>
+        //DOM elements
         const modal = document.getElementById("submit-modal");
         const form = document.querySelector(".form-input");
         const copyBtn = document.querySelector(".btn-copy");
+        const targetNameInput = document.getElementById("target-name");
+        const emailInput = document.getElementById("email")
+        const inviLink = document.querySelector(".invi-link")
         const copiedText = document.createElement('p');
         copiedText.textContent = "Copied!"
         copiedText.style.textAlign = "center";
 
         form.addEventListener("submit", (e) => {
             e.preventDefault();
+
+            const nameValue = encodeURIComponent(targetNameInput.value.trim());
+            const emailValue = encodeURIComponent(emailInput.value.trim());
+
+            const baseURL = window.location.href.substring(0, window.location.href.lastIndexOf("/")+1);
+            const generatedURL = `${baseURL}invitation.html?name=${nameValue}&email=${emailValue}`;
+
+            inviLink.href = generatedURL;
+            inviLink.textContent = generatedURL;
+
             modal.showModal();
         });
         const copiedTextShow = () => {
