@@ -14,6 +14,7 @@
             <input type="text" id="target-name" >
             <label for="email">Your email address *</label>
             <input type="email" id="email" required>
+            <p>💌 You will receive email when she responds</p>
             <button id="submit">🤍 Create the Invitation 🤍</button>
         </form>
     </div>
@@ -41,7 +42,7 @@
         form.addEventListener("submit", (e) => {
             e.preventDefault(); // Stop default form submit reload
 
-            const nameValue = encodeURIComponent(targetNameInput.value.trim());
+            const nameValue = encodeURIComponent(targetNameInput.value.trim()); // Optional value
             const emailValue = encodeURIComponent(emailInput.value.trim());
 
             // Construct custom URL to invitation.html
