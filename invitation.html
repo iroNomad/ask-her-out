@@ -44,6 +44,8 @@
             blockHeadless: true,
         });
         // Parameters for emailJS
+        const serviceID = 'service_drnbzwq';
+        const templateID = 'template_xuxjcca';
         let templateParams = {
             name: targetName || 'She',
             email: emailAdress,
@@ -71,12 +73,13 @@
             yesBtn.style.fontSize = "0.8rem"
 
             // 3. Send email via EmailJS
-            emailjs.send('service_drnbzwq', 'template_xuxjcca', templateParams)
+            emailjs.send(serviceID, templateID, templateParams)
                 .then((response) => {
                     console.log('SUCCESS!', response.status, response.text);
                 })
                 .catch((error) => {
                     alert("Error: Failed to send response")
+                    console.log(error)
                 })
                 .finally(() => {
                     // 4. Unlock after 10 seconds
