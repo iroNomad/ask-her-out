@@ -34,7 +34,7 @@
         const copyBtn = document.querySelector(".btn-copy");
         const targetNameInput = document.getElementById("target-name");
         const emailInput = document.getElementById("email");
-        const inviLink = document.querySelector(".invi-link");
+        const inviAnchor = document.querySelector(".invi-link");
         const copiedText = document.createElement('p');
         copiedText.textContent = "Copied!"
         copiedText.style.textAlign = "center";
@@ -49,13 +49,13 @@
             const baseURL = window.location.href.substring(0, window.location.href.lastIndexOf("/")+1);
             const generatedURL = `${baseURL}invitation.html?name=${nameValue}&email=${emailValue}`;
 
-            inviLink.href = generatedURL;
-            inviLink.textContent = generatedURL;
+            inviAnchor.href = generatedURL;
+            inviAnchor.textContent = generatedURL;
 
             modal.showModal();
         });
         const copyLink = () => {
-            navigator.clipboard.writeText(inviLink.href);
+            navigator.clipboard.writeText(inviAnchor.href);
             copyBtn.replaceWith(copiedText);
         }
         const closeModal = () => {
