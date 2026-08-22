@@ -1,6 +1,9 @@
 body, button, input {
     font-family: Georgia, Garamond, serif;
 }
+.card {
+    min-height: 100dvh;
+}
 h1 {
     font-size: 1.6rem;
     margin: 0 auto 40px;
