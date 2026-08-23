@@ -20,7 +20,16 @@
     </div>
     <dialog class="modal">
         <h1>I knew you would say YES 😍</h1>
-        <button class="btn-confirm">Of course!</button>
+        <label for="date-ideas">What should we do?</label>
+        <select name="date-ideas" id="date-ideas">
+            <option value="dinner-walk">Dinner & Walk in park</option>
+            <option value="movie-cafe">Movie & Dinner</option>
+            <option value="mercedes">Board game & Coffee</option>
+            <option value="audi">Dinner & Drinks</option>
+        </select>
+        <label for="date-picker">When are you available?</label>
+        <input type="datetime-local" id="date-picker">
+        <button class="btn-confirm">Confirm date</button>
     </dialog>
     <script>
         const yesBtn = document.querySelector(".btn-yes");
