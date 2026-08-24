@@ -1,4 +1,4 @@
-body, button, input {
+body, button, input, select {
     font-family: Georgia, Garamond, serif;
 }
 .card {
@@ -19,7 +19,12 @@ input, button {
     border-radius: 10px;
     border: none;
 }
-input {
+select {
+    font-size: 1.4rem;
+    border-radius: 10px;
+    border: none;
+}
+input, select {
     opacity: 0.8;
     padding: 10px 20px;
 }
@@ -57,6 +62,10 @@ dialog {
     display: flex;
     flex-direction: column;
 }
+#invitationModal {
+    gap: 20px;
+}
+
 .invi-link {
     display: block;
 }
