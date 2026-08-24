@@ -25,10 +25,10 @@
             <option value="Movie & Dinner">Movie & Dinner</option>
             <option value="Dinner & Walk in park">Dinner & Walk in park</option>
             <option value="Board game & Coffee">Board game & Coffee</option>
-            <option value="Surprise">Surprise me!</option>
+            <option value="Surprise her">Surprise me!</option>
         </select>
         <label for="date-picker">When are you available?</label>
-        <input type="datetime-local" id="date-picker" required>
+        <input type="datetime-local" id="date-picker">
         <div id="anytimePickerBox">
             <input type="checkbox" id="anytimePickerCheckbox">
             <label for="anytimePickerCheckbox">Anytime</label>
@@ -42,20 +42,25 @@
         const confirmBtn = document.querySelector(".btn-confirm");
         const targetNameElement = document.querySelector("#target-name");
         const anytimeCheckbox = document.getElementById("anytimePickerCheckbox");
-
-        const selectedDateIdea = document.getElementById("date-ideas");
+        const selectedDatePlan = document.getElementById("date-ideas");
         const selectedDateAndTime = document.getElementById("date-picker");
 
+        // anytimeCheckbox toggle
         anytimeCheckbox.addEventListener("change", () => {
-            selectedDateAndTime.disabled = anytimeCheckbox.checked;
+            if (anytimeCheckbox.checked) {
+                selectedDateAndTime.disabled = true;
+                selectedDateAndTime.value = "";
+            }
+            else {
+                selectedDateAndTime.disabled = false;
+            }
         });
 
-        //Extract name, email from URL
+        // Extract name, email from URL
         const queryString = window.location.search;
         const URLparams = new URLSearchParams(queryString);
         const targetName = URLparams.get("name");
         const emailAdress = URLparams.get("email");
-
 
         if (targetName) {
             targetNameElement.textContent = targetName;
@@ -66,14 +71,15 @@
             publicKey: "TEiwOmEL1z1uY3LtR",
             blockHeadless: true,
         });
+
         // Parameters for emailJS
         const EMAILJS_SERVICE_ID = 'service_drnbzwq';
         const EMAILJS_TEMPLATE_ID = 'template_xuxjcca';
         let templateParams = {
             email: emailAdress,
             name: targetName || 'She',
-            dateIdea: "",
-            dayAndTime: "Anytime"
+            datePlan: "",
+            dayAndTime: ""
         };
 
         // 'No' button click -> 'Yes' button scales up
@@ -83,12 +89,14 @@
             yesBtn.style.transform = `scale(${currentScale})`;
             yesBtn.style.transition = "transform 0.1s ease";
         }
+
         // 'Yes' button click -> Modal opens, sends email to inviter
         let isCooldown = false;
         yesBtn.addEventListener("click", () => {
             currentScale = 1.3; //1.3 is default value
             modal.showModal();
         })
+
         // 'Confirm' button click -> Modal closes,'Yes' button scale rate resets
         confirmBtn.addEventListener("click", () => {
             // 1. If button is in cooldown, stop execution immediately
@@ -102,9 +110,11 @@
             yesBtn.style.fontSize = "0.8rem"
 
             // 3. Add input values to EmailJS templateParams
-            templateParams.dateIdea = selectedDateIdea.value;
-
-            if (selectedDateAndTime.value) {
+            templateParams.datePlan = selectedDatePlan.value;
+            if (anytimeCheckbox.checked || selectedDateAndTime.value) {
+                templateParams.dayAndTime = "Anytime";
+            }
+            else {
                 const selectedDate = selectedDateAndTime.value.substring(0, 10);
                 const selectedTime = selectedDateAndTime.value.substring(12);
                 templateParams.dayAndTime = selectedDate + " at " + selectedTime;
