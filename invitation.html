@@ -111,12 +111,12 @@
 
             // 3. Add input values to EmailJS templateParams
             templateParams.datePlan = selectedDatePlan.value;
-            if (anytimeCheckbox.checked || selectedDateAndTime.value) {
+            if (anytimeCheckbox.checked || !selectedDateAndTime.value) {
                 templateParams.dayAndTime = "Anytime";
             }
             else {
                 const selectedDate = selectedDateAndTime.value.substring(0, 10);
-                const selectedTime = selectedDateAndTime.value.substring(12);
+                const selectedTime = selectedDateAndTime.value.substring(11);
                 templateParams.dayAndTime = selectedDate + " at " + selectedTime;
             }
 
