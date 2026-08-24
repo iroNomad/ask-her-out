@@ -105,6 +105,19 @@ img {
     color: black;
     background: lightgray;
 }
+#anytimePickerBox {
+    margin-top: -10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+#anytimePickerBox label {
+    font-size: 1rem;
+}
+#anytimePickerCheckbox {
+    width: 20px;
+    margin: 0;
+}
 .btn-confirm {
     width: 100%;
 }

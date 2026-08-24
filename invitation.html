@@ -22,13 +22,17 @@
         <h1>I knew you would say YES 😍</h1>
         <label for="date-ideas">What should we do?</label>
         <select name="date-ideas" id="date-ideas">
-            <option value="Surprise">Surprise me!</option>
-            <option value="Dinner & Walk in park">Dinner & Walk in park</option>
             <option value="Movie & Dinner">Movie & Dinner</option>
+            <option value="Dinner & Walk in park">Dinner & Walk in park</option>
             <option value="Board game & Coffee">Board game & Coffee</option>
+            <option value="Surprise">Surprise me!</option>
         </select>
         <label for="date-picker">When are you available?</label>
         <input type="datetime-local" id="date-picker" required>
+        <div id="anytimePickerBox">
+            <input type="checkbox" id="anytimePickerCheckbox">
+            <label for="anytimePickerCheckbox">Anytime</label>
+        </div>
         <button type="submit" class="btn-confirm">Confirm date</button>
     </dialog>
     <script>
@@ -37,12 +41,21 @@
         const modal = document.querySelector(".modal");
         const confirmBtn = document.querySelector(".btn-confirm");
         const targetNameElement = document.querySelector("#target-name");
+        const anytimeCheckbox = document.getElementById("anytimePickerCheckbox");
+
+        const selectedDateIdea = document.getElementById("date-ideas");
+        const selectedDateAndTime = document.getElementById("date-picker");
+
+        anytimeCheckbox.addEventListener("change", () => {
+            selectedDateAndTime.disabled = anytimeCheckbox.checked;
+        });
 
         //Extract name, email from URL
         const queryString = window.location.search;
         const URLparams = new URLSearchParams(queryString);
         const targetName = URLparams.get("name");
         const emailAdress = URLparams.get("email");
+
 
         if (targetName) {
             targetNameElement.textContent = targetName;
@@ -89,14 +102,14 @@
             yesBtn.style.fontSize = "0.8rem"
 
             // 3. Add input values to EmailJS templateParams
-            const selectedDateIdea = document.getElementById("date-ideas");
             templateParams.dateIdea = selectedDateIdea.value;
-            const selectedDateAndTime = document.getElementById("date-picker");
+
             if (selectedDateAndTime.value) {
                 const selectedDate = selectedDateAndTime.value.substring(0, 10);
                 const selectedTime = selectedDateAndTime.value.substring(12);
                 templateParams.dayAndTime = selectedDate + " at " + selectedTime;
             }
+
             // 4. Send email via EmailJS
             emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams)
                 .then((response) => {
