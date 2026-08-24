@@ -32,6 +32,7 @@
         <button type="submit" class="btn-confirm">Confirm date</button>
     </dialog>
     <script>
+        // DOM elements
         const yesBtn = document.querySelector(".btn-yes");
         const modal = document.querySelector(".modal");
         const confirmBtn = document.querySelector(".btn-confirm");
@@ -53,8 +54,8 @@
             blockHeadless: true,
         });
         // Parameters for emailJS
-        const serviceID = 'service_drnbzwq';
-        const templateID = 'template_xuxjcca';
+        const EMAILJS_SERVICE_ID = 'service_drnbzwq';
+        const EMAILJS_TEMPLATE_ID = 'template_xuxjcca';
         let templateParams = {
             email: emailAdress,
             name: targetName || 'She',
@@ -87,7 +88,7 @@
             yesBtn.textContent = "Response sent 💌";
             yesBtn.style.fontSize = "0.8rem"
 
-            // 3. Add input values to templateParams
+            // 3. Add input values to EmailJS templateParams
             const selectedDateIdea = document.getElementById("date-ideas");
             templateParams.dateIdea = selectedDateIdea.value;
             const selectedDateAndTime = document.getElementById("date-picker");
@@ -97,7 +98,7 @@
                 templateParams.dayAndTime = selectedDate + " at " + selectedTime;
             }
             // 4. Send email via EmailJS
-            emailjs.send(serviceID, templateID, templateParams)
+            emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams)
                 .then((response) => {
                     console.log('SUCCESS!', response.status, response.text);
                 })
