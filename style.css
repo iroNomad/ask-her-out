@@ -14,7 +14,7 @@ body {
 body, button, input, select {
     font-family:  'PixelifySans', Georgia, serif;
 }
-button, input, select, textarea {
+button, input, select {
     font-family: inherit;
     font-size: inherit;
 }
@@ -33,7 +33,7 @@ input, button {
     font-size: 2rem;
     height: 30px;
     margin-bottom: 10px;
-    border: none;
+    /*border: none;*/
 }
 select {
     font-size: 2rem;
@@ -42,6 +42,11 @@ select {
 input, select {
     opacity: 0.8;
     padding: 10px 20px;
+    outline: solid 4px black;
+}
+#anytimePickerCheckbox {
+    height: 20px;
+    outline: none;
 }
 button {
     margin-top: 20px;
@@ -106,6 +111,8 @@ dialog {
 }
 img {
     width: 100%;
+    border: dashed 4px black;
+    box-sizing: border-box;
 }
 .btn-container {
     margin-top: 30px;
