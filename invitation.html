@@ -28,10 +28,10 @@
             <option value="Surprise her">Surprise me!</option>
         </select>
         <label for="date-picker">When are you available?</label>
-        <input type="datetime-local" id="date-picker">
+        <input type="date" id="date-picker">
         <div id="anytimePickerBox">
             <input type="checkbox" id="anytimePickerCheckbox">
-            <label for="anytimePickerCheckbox">Anytime</label>
+            <label for="anytimePickerCheckbox">Anyday</label>
         </div>
         <button type="submit" class="btn-confirm">Confirm date</button>
     </dialog>
@@ -42,17 +42,17 @@
         const confirmBtn = document.querySelector(".btn-confirm");
         const targetNameElement = document.querySelector("#target-name");
         const anytimeCheckbox = document.getElementById("anytimePickerCheckbox");
-        const selectedDatePlan = document.getElementById("date-plans");
-        const selectedDateAndTime = document.getElementById("date-picker");
+        const selectedPlan = document.getElementById("date-plans");
+        const selectedDate = document.getElementById("date-picker");
 
         // anytimeCheckbox toggle
         anytimeCheckbox.addEventListener("change", () => {
             if (anytimeCheckbox.checked) {
-                selectedDateAndTime.disabled = true;
-                selectedDateAndTime.value = "";
+                selectedDate.disabled = true;
+                selectedDate.value = "";
             }
             else {
-                selectedDateAndTime.disabled = false;
+                selectedDate.disabled = false;
             }
         });
 
@@ -79,7 +79,7 @@
             email: emailAdress,
             name: targetName || 'She',
             datePlan: "",
-            dayAndTime: ""
+            day: ""
         };
 
         // 'No' button click -> 'Yes' button scales up
@@ -110,14 +110,12 @@
             yesBtn.style.fontSize = "0.8rem"
 
             // 3. Add input values to EmailJS templateParams
-            templateParams.datePlan = selectedDatePlan.value;
-            if (anytimeCheckbox.checked || !selectedDateAndTime.value) {
-                templateParams.dayAndTime = "Anytime";
+            templateParams.datePlan = selectedPlan.value;
+            if (anytimeCheckbox.checked || !selectedDate.value) {
+                templateParams.day = "Anytime";
             }
             else {
-                const selectedDate = selectedDateAndTime.value.substring(0, 10);
-                const selectedTime = selectedDateAndTime.value.substring(11);
-                templateParams.dayAndTime = selectedDate + " at " + selectedTime;
+                templateParams.day = selectedDate.value;
             }
 
             // 4. Send email via EmailJS
@@ -135,7 +133,7 @@
                         isCooldown = false;
                         yesBtn.disabled = false;
                         yesBtn.textContent = originalText;
-                        yesBtn.style.fontSize = "1.4rem"
+                        yesBtn.style.fontSize = "2rem"
                     }, 10000);
                 });
             yesBtn.style.transform = `scale(${currentScale})`;
