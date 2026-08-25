@@ -8,7 +8,9 @@ html {
     font-style: normal;
     font-display: swap;
 }
-
+body {
+    margin: 0;
+}
 body, button, input, select {
     font-family:  'PixelifySans', Georgia, serif;
 }
@@ -31,12 +33,10 @@ input, button {
     font-size: 2rem;
     height: 30px;
     margin-bottom: 10px;
-    border-radius: 10px;
     border: none;
 }
 select {
     font-size: 2rem;
-    border-radius: 10px;
     border: none;
 }
 input, select {
@@ -49,6 +49,10 @@ button {
     color: white;
     background: deeppink;
     transition: transform 0.1s ease;
+    border: outset 4px deeppink;
+}
+button:active {
+    border: inset 4px deeppink;
 }
 button:hover {
     cursor: pointer;
@@ -92,7 +96,6 @@ dialog {
 .btn-copy {
     align-self: center;
     width: 50%;
-    border: none;
     height: 40px;
 }
 .btn-done {
@@ -125,6 +128,10 @@ img {
     position: relative;
     color: black;
     background: lightgray;
+    border: outset 4px lightgray;
+}
+.btn-no:active {
+    border: inset 4px lightgray;
 }
 #anytimePickerBox {
     margin-top: -10px;
