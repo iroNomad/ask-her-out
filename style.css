@@ -3,7 +3,7 @@ html {
 }
 @font-face {
     font-family: 'PixelifySans';
-    src: url('/assets/Pixelpurl-0vBPP.ttf');
+    src: url('./assets/Pixelpurl-0vBPP.ttf');
     font-weight: 100 900;
     font-style: normal;
     font-display: swap;
