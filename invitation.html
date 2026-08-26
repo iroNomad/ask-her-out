@@ -60,7 +60,7 @@
         const queryString = window.location.search;
         const URLparams = new URLSearchParams(queryString);
         const targetName = URLparams.get("name");
-        const emailAdress = URLparams.get("email");
+        const emailAddress = URLparams.get("email");
 
         if (targetName) {
             targetNameElement.textContent = targetName;
@@ -76,7 +76,7 @@
         const EMAILJS_SERVICE_ID = 'service_drnbzwq';
         const EMAILJS_TEMPLATE_ID = 'template_xuxjcca';
         let templateParams = {
-            email: emailAdress,
+            email: emailAddress,
             name: targetName || 'She',
             datePlan: "",
             day: ""
