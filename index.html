@@ -19,27 +19,25 @@
         </form>
     </div>
     <dialog class="modal">
-        <button class="btn-x">X</button>
+        <button class="btn-x" onclick="closeModal()">X</button>
         <h1 id="modal-title">Your invitation is ready !</h1>
         <p>Send this invitation link to her: </p>
         <a class="invi-anchor" href=""></a>
         <button class="btn-copy" onclick="copyLink()">Copy link</button>
+        <p class="txt-copied" style="display: none; text-align: center">Copied!</p>
         <form method="dialog">
-            <button onclick="closeModal()" class="btn-done">Done</button>
+            <button class="btn-done" onclick="closeModal()">Done</button>
         </form>
     </dialog>
     <script>
         // DOM elements
         const modal = document.querySelector(".modal");
-        const xBtn = document.querySelector(".btn-x");
         const form = document.querySelector(".form-input");
         const copyBtn = document.querySelector(".btn-copy");
         const targetNameInput = document.getElementById("target-name");
         const emailInput = document.getElementById("email");
         const inviAnchor = document.querySelector(".invi-anchor");
-        const copiedText = document.createElement('p');
-        copiedText.textContent = "Copied!"
-        copiedText.style.textAlign = "center";
+        const copiedText = document.querySelector(".txt-copied");
 
         form.addEventListener("submit", (e) => {
             e.preventDefault(); // Stop default form submit reload
@@ -57,14 +55,15 @@
             modal.showModal();
         });
 
-        xBtn.addEventListener("click", () => {modal.close()});
-
         const copyLink = () => {
             navigator.clipboard.writeText(inviAnchor.href);
-            copyBtn.replaceWith(copiedText);
+            copiedText.style.display = "block";
+            copyBtn.style.display = "none";
         }
         const closeModal = () => {
-            copiedText.replaceWith(copyBtn);
+            modal.close();
+            copiedText.style.display = "none";
+            copyBtn.style.display = "block";
         }
     </script>
 </body>
