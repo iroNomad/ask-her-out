@@ -12,8 +12,7 @@ html {
     font-display: swap;
 }
 body {
-    max-width: 425px;
-    margin: auto;
+    padding: 0;
 }
 body, button, input, select {
     font-family:  'PixelifySans', Georgia, serif;
@@ -22,12 +21,9 @@ button, input, select {
     font-family: inherit;
     font-size: inherit;
 }
-.card {
-    min-height: 100dvh;
-}
 h1 {
     font-size: 3.5rem;
-    margin: 0 auto 20px;
+    margin: 0 auto 1rem;
     text-align: center;
 }
 label {
@@ -36,11 +32,11 @@ label {
 input, button, select {
     font-size: 2rem;
     height: 3rem;
-    margin-bottom: 10px;
+    margin-bottom: 1rem;
 }
 input, select {
     opacity: 0.8;
-    padding: 10px 20px;
+    padding: 0.5rem 1rem;
     outline: solid 4px black;
 }
 #anytimePickerCheckbox {
@@ -66,6 +62,11 @@ button:hover {
     padding: 2rem;
     border: dashed 4px deeppink;
 }
+.card {
+    margin: 0 auto;
+    max-width: 425px;
+    min-height: 100dvh;
+}
 dialog.modal {
     width: 100%;
     max-width: 425px;
@@ -85,7 +86,7 @@ dialog.modal {
 }
 @media(max-width: 320px) {
     html {
-        font-size: 14px;
+        font-size: 12px;
     }
 }
 .modal[open] { /* Only applies when modal is open */
