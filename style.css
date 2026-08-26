@@ -1,3 +1,6 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+}
 html {
     font-size: 16px;
 }
@@ -9,7 +12,8 @@ html {
     font-display: swap;
 }
 body {
-    margin: 0;
+    max-width: 425px;
+    margin: auto;
 }
 body, button, input, select {
     font-family:  'PixelifySans', Georgia, serif;
@@ -29,15 +33,10 @@ h1 {
 label {
     font-size: 2rem;
 }
-input, button {
+input, button, select {
     font-size: 2rem;
-    height: 30px;
+    height: 3rem;
     margin-bottom: 10px;
-    /*border: none;*/
-}
-select {
-    font-size: 2rem;
-    border: none;
 }
 input, select {
     opacity: 0.8;
@@ -50,7 +49,7 @@ input, select {
 }
 button {
     margin-top: 20px;
-    height: 60px;
+    height: 4rem;
     color: white;
     background: deeppink;
     transition: transform 0.1s ease;
@@ -64,18 +63,25 @@ button:hover {
 }
 .card, dialog {
     background: lightpink;
-    padding: 5%;
+    padding: 2rem;
     border: dashed 4px deeppink;
+}
+dialog.modal {
+    width: 100%;
     max-width: 425px;
-    margin: 0 auto;
 }
 .form-input {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 1.3rem;
 }
-dialog {
-    margin: auto;
+.btn-x {
+    margin: 0;
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 3rem;
+    width: 3rem;
 }
 @media(max-width: 320px) {
     html {
@@ -87,10 +93,10 @@ dialog {
     flex-direction: column;
 }
 #invitationModal {
-    gap: 20px;
+    gap: 1.3rem;
 }
 
-.invi-link, p {
+.invi-anchor, p {
     font-size: 1.4rem;
     display: block;
 }
@@ -112,7 +118,6 @@ dialog {
 img {
     width: 100%;
     border: dashed 4px black;
-    box-sizing: border-box;
 }
 .btn-container {
     margin-top: 30px;

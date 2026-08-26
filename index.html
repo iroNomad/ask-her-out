@@ -19,9 +19,10 @@
         </form>
     </div>
     <dialog class="modal">
-        <h1 id="modal-title">Your invitation is ready!</h1>
+        <button class="btn-x">X</button>
+        <h1 id="modal-title">Your invitation is ready !</h1>
         <p>Send this invitation link to her: </p>
-        <a class="invi-link" href=""></a>
+        <a class="invi-anchor" href=""></a>
         <button class="btn-copy" onclick="copyLink()">Copy link</button>
         <form method="dialog">
             <button onclick="closeModal()" class="btn-done">Done</button>
@@ -30,11 +31,12 @@
     <script>
         // DOM elements
         const modal = document.querySelector(".modal");
+        const xBtn = document.querySelector(".btn-x");
         const form = document.querySelector(".form-input");
         const copyBtn = document.querySelector(".btn-copy");
         const targetNameInput = document.getElementById("target-name");
         const emailInput = document.getElementById("email");
-        const inviAnchor = document.querySelector(".invi-link");
+        const inviAnchor = document.querySelector(".invi-anchor");
         const copiedText = document.createElement('p');
         copiedText.textContent = "Copied!"
         copiedText.style.textAlign = "center";
@@ -54,6 +56,9 @@
 
             modal.showModal();
         });
+
+        xBtn.addEventListener("click", () => {modal.close()});
+
         const copyLink = () => {
             navigator.clipboard.writeText(inviAnchor.href);
             copyBtn.replaceWith(copiedText);

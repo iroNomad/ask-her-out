@@ -19,7 +19,8 @@
         </div>
     </div>
     <dialog id="invitationModal" class="modal">
-        <h1>I knew you would say YES !</h1>
+        <button class="btn-x">X</button>
+        <h1>I knew you <br>would say YES !</h1>
         <label for="date-plans">What should we do?</label>
         <select name="date-plans" id="date-plans">
             <option value="Movie & Dinner">Movie & Dinner</option>
@@ -39,11 +40,13 @@
         // DOM elements
         const yesBtn = document.querySelector(".btn-yes");
         const modal = document.querySelector(".modal");
+        const xBtn = document.querySelector(".btn-x");
         const confirmBtn = document.querySelector(".btn-confirm");
         const targetNameElement = document.querySelector("#target-name");
         const anytimeCheckbox = document.getElementById("anytimePickerCheckbox");
         const selectedPlan = document.getElementById("date-plans");
         const selectedDate = document.getElementById("date-picker");
+
 
         // anytimeCheckbox toggle
         anytimeCheckbox.addEventListener("change", () => {
@@ -96,7 +99,7 @@
             currentScale = 1.3; //1.3 is default value
             modal.showModal();
         })
-
+        xBtn.addEventListener("click", () => {modal.close()});
         // 'Confirm' button click -> Modal closes,'Yes' button scale rate resets
         confirmBtn.addEventListener("click", () => {
             // 1. If button is in cooldown, stop execution immediately
